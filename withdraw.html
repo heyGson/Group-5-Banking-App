@@ -47,7 +47,7 @@
           <div class="dropdown">
             <h3>Source Account</h3>
             <select id="accountDropdown" onchange="updateAccountInfo()">
-              <option selected>-- Choose Account</option>
+              <option selected id="chooseAccount">-- Choose Account</option>
               <option value="account01">My Account01</option>
               <option value="account02">My Account02</option>
             </select>
@@ -92,6 +92,7 @@
           "availableBalanceText"
         );
         const php = document.getElementById("php");
+        const chooseAccountOption = document.getElementById("chooseAccount");
 
         if (dropdown.value === "account01") {
           accountNumberSpan.textContent = "00014448332";
@@ -101,6 +102,7 @@
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";
           php.style.visibility = "visible";
+          chooseAccountOption.setAttribute("disabled", "");
         } else if (dropdown.value === "account02") {
           accountNumberSpan.textContent = "00023578992";
           accountNumberSpan.style.fontSize = "18px";
@@ -109,9 +111,8 @@
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";
           php.style.visibility = "visible";
+          chooseAccountOption.setAttribute("disabled", "");
         }
-
-        accountInfoDiv.style.display = "block";
       }
     </script>
   </body>
