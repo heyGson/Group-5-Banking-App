@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Fund transfer page</title>
+  </head>
+  <body>
+    <!-- top menu area -->
+    <div class="dashboard-top-menu-container">
+      <div class="dashboard-top-left-logo">
+        <h2><span id="red">KS</span><span id="blue">Bank</span></h2>
+        <p>Kuripot Savings Bank</p>
+      </div>
+
+      <div class="dashboard-top-right-menu">
+        <ul>
+          <li><a href="">Reminders</a></li>
+          <li><a href="">Profile Settings</a></li>
+          <li><a href="">Customer Service</a></li>
+          <li><a href="index.html">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- left side menu area -->
+    <div class="dashboard-left-menu-container">
+      <div>
+        <h1>Welcome to your dashboard <span id="adminName"></span>!</h1>
+      </div>
+
+      <div class="transactions">
+        <h3>Transactions</h3>
+        <ul>
+          <li><a href="dashboard.html">My Accounts</a></li>
+          <li><a href="deposit.html">Deposit</a></li>
+          <li><a href="withdraw.html">Withdraw</a></li>
+          <li><a href="fundtransfer.html">Fund Transfer</a></li>
+          <li id="expensesTab"><a href="expenses.html">Expenses</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="account-dashboard">
+      <div class="my-accounts-container">
+        <h1>Welcome to your expenses page</h1>
+      </div>
+    </div>
+
+    <script>
+      const getAdminName = document.getElementById("adminName");
+      const adminUsername = "Group5";
+
+      getAdminName.innerText = adminUsername;
+    </script>
+  </body>
+</html>

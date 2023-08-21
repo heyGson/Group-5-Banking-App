@@ -1,0 +1,634 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: roboto;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  /* display: flex; */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#depositTab,
+#myAccountsTab,
+#expensesTab,
+#fundTransferTab,
+#withdrawTab {
+  width: 220px;
+  height: 30px;
+  padding: 5px;
+  background-color: blue;
+  color: #fff;
+}
+
+.login-side h1 {
+  font-size: 50px;
+}
+
+.login-side {
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.image-side {
+  width: 75%;
+  height: 100%;
+  background-image: url(woman-with-atm.jpg);
+  position: absolute;
+  right: 0;
+  background-size: cover;
+}
+
+.logo-container {
+  margin-top: 25px;
+  text-align: center;
+  display: block;
+}
+
+.logo-container,
+.dashboard-logo-container p {
+  color: blue;
+  font-weight: bold;
+}
+
+#red {
+  color: blue;
+}
+
+#blue {
+  color: red;
+}
+
+.form-container {
+  margin-top: 35px;
+  margin-left: 30px;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+}
+
+.form-container h3 {
+  font-weight: bolder;
+}
+
+#username,
+#password,
+#login-btn {
+  display: block;
+  margin-top: 10px;
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+#login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ======================================= DASHBOARD STYLES ====================================== */
+
+/* Top menu starts here ====================== */
+
+.dashboard-top-menu-container {
+  width: 100%;
+  height: 10vh;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-top-menu-container p,
+li {
+  font-size: 13px;
+}
+
+.dashboard-top-left-logo {
+  margin-left: 20px;
+}
+
+.dashboard-top-left-logo p {
+  color: blue;
+}
+
+.dashboard-top-right-menu {
+  position: absolute;
+  right: 20px;
+}
+
+.dashboard-top-right-menu li {
+  display: inline;
+  margin-right: 10px;
+}
+
+/* Top menu ends here ====================== */
+
+/* Left side menu starts here ====================== */
+
+.dashboard-left-menu-container {
+  width: 20%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  background-color: #f5f5f5;
+  border-right: 1px solid #778899;
+}
+.dashboard-left-menu-container h1 {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.transactions h3 {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  color: #778899;
+}
+
+.transactions ul {
+  list-style-type: none;
+  position: absolute;
+  top: 25%;
+  left: 20%;
+}
+
+.transactions li {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+/* Left side menu ends here ====================== */
+
+/* Right dashboard starts here ====================== */
+
+.account-dashboard {
+  width: 80%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 10%;
+  background-color: #f5f5f5;
+}
+
+.my-accounts-container {
+  width: 50%;
+  height: 60%;
+  background-color: #fff;
+  position: absolute;
+  transform: translate(30%, 15%);
+  margin: auto;
+}
+
+/* Right ends starts here ====================== */
+
+/* 1ST account styles starts here ====================== */
+
+.my-accounts h3 {
+  position: fixed;
+  top: 5px;
+  left: 10px;
+}
+
+.my-accounts span {
+  position: fixed;
+  top: 5px;
+  right: 20px;
+  color: blue;
+}
+
+#plus-sign {
+  position: absolute;
+  right: 90px;
+  top: 0;
+  text-align: center;
+  width: 19px;
+  height: 19px;
+  background: blue;
+  color: white;
+  border-radius: 50%;
+  font-weight: bolder;
+}
+
+.my-account-1 {
+  width: 90%;
+  height: 130px;
+  position: absolute;
+  transform: translate(5%, 55%);
+  background-color: #e5e4e2;
+  border-radius: 8px;
+}
+
+.my-account-1 ul > li:nth-child(2) {
+  list-style: none;
+  margin-left: 20%;
+}
+
+.my-account-1 ul > li:first-child {
+  margin-left: 30px;
+}
+
+.my-account-1 li {
+  display: inline-block;
+  margin-top: 5%;
+}
+
+#accountNumber {
+  color: blue;
+  font-size: 15px;
+}
+
+#currentBalance {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+/* this one is reusable */
+#my-account-text {
+  color: #778899;
+  font-size: 12px;
+}
+
+#create-transaction-btn {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  background-color: blue;
+  color: #fff;
+  text-align: left;
+  padding-left: 5px;
+  font-size: 12px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #3457d5;
+
+    .create-transaction-dropdown {
+      display: block;
+    }
+  }
+}
+
+#down-arrow {
+  color: #fff;
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  font-size: 15px;
+}
+
+.create-transcation-container {
+  width: 200px;
+  position: relative;
+  top: 100px;
+  left: 67%;
+
+  &:hover .create-transaction-dropdown {
+    display: block;
+    visibility: visible;
+    transform: translateY(0);
+    z-index: 555;
+  }
+}
+
+.create-transaction-dropdown {
+  background: #fff;
+  border-radius: 4.8px;
+  position: absolute;
+  left: 1.6px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  transform: translateY(-1.6px);
+  transition: transform 0.5s;
+  visibility: hidden;
+}
+
+.create-transaction-dropdown ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.create-transaction-dropdown li a {
+  display: flex;
+  padding: 12.8px;
+  color: #000;
+}
+
+.create-transaction-dropdown ul > li:first-child {
+  background-color: #e9e9e9;
+  font-weight: bold;
+}
+
+.create-transaction-dropdown li a:visited {
+  background-color: #e9e9e9;
+  font-weight: bold;
+}
+
+.create-transaction-dropdown li span {
+  margin-left: 4.8px;
+  padding: 5px;
+
+  &:hover {
+    background: blue;
+    color: #fff;
+    width: 100%;
+  }
+}
+
+/* 1ST account styles Ends here ====================== */
+
+/* 2ND account styles starts here ====================== */
+
+.second-account {
+  position: relative;
+  top: 50%;
+}
+
+.my-account-2 {
+  width: 90%;
+  height: 130px;
+  position: absolute;
+  transform: translate(5%, -10%);
+  background-color: #e5e4e2;
+  border-radius: 8px;
+}
+
+.my-account-2 ul > li:nth-child(2) {
+  list-style: none;
+  margin-left: 20%;
+}
+
+.my-account-2 ul > li:first-child {
+  margin-left: 30px;
+}
+
+.my-account-2 li {
+  display: inline-block;
+  margin-top: 5%;
+}
+
+.create-transcation-container-2 {
+  width: 200px;
+  position: relative;
+  top: 20px;
+  left: 67%;
+
+  &:hover .create-transaction-dropdown {
+    display: block;
+    visibility: visible;
+    transform: translateY(0);
+    z-index: 555;
+  }
+}
+
+/* ======================================= DEPOSIT & WITHDAWAL STYLES =================================== */
+
+.dropdown-container {
+  position: relative;
+  top: 35px;
+  margin: auto;
+  width: 90%;
+  height: 80px;
+  display: flex;
+  background-color: #f5f5f5;
+  padding: 10px;
+  text-align: center;
+}
+.dropdown select {
+  position: absolute;
+  left: 20px;
+  top: 35px;
+  width: 150px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.dropdown h3 {
+  position: absolute;
+  left: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.account-info p {
+  display: inline-block;
+  font-size: 14px;
+}
+
+#accountNumText,
+#availableBalanceText {
+  color: #778899 !important;
+  visibility: hidden;
+}
+
+.account-info p:first-child {
+  position: absolute;
+  right: 230px;
+}
+
+.account-info p:last-child {
+  position: absolute;
+  right: 50px;
+}
+
+.account-info span {
+  color: #000 !important;
+  font-weight: bolder;
+}
+
+#account-number {
+  position: absolute;
+  top: 25px;
+  left: 0;
+}
+
+#balance {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+}
+
+#php {
+  position: absolute;
+  top: 25px;
+  right: 90px;
+  visibility: hidden;
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+#depositDetails {
+  position: absolute;
+  top: -40px;
+  color: #778899;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.amount-container {
+  position: relative;
+  width: 90%;
+  top: 95px;
+  margin-left: 30px;
+}
+
+.amount input {
+  width: 50%;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.amount-container h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.amount-container button {
+  position: absolute;
+  right: 65px;
+  top: 30px;
+  width: 30%;
+  height: 35px;
+  border-radius: 5px;
+  background-color: blue;
+  color: #fff;
+}
+
+/* ======================================= FUND TRANSFER STYLES ====================================== */
+
+.dropdown2 {
+  position: relative;
+  top: 100px;
+  margin: auto;
+  width: 90%;
+  height: 50px;
+  display: flex;
+  background-color: #f5f5f5;
+  padding: 10px;
+  /* text-align: center; */
+}
+
+.fundtransfer-info p {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.fundtransfer-info p:first-child {
+  position: absolute;
+  right: 230px;
+}
+
+.fundtransfer-info p:last-child {
+  position: absolute;
+  right: 50px;
+}
+
+.fundtransfer-info span {
+  color: #000 !important;
+  font-weight: bolder;
+}
+
+#fundTransferAccountNumText,
+#fundTransferAvailBalanceText {
+  color: #778899 !important;
+  visibility: hidden;
+}
+
+#fundTransferAccountNum {
+  position: absolute;
+  top: 65px;
+  left: 0;
+}
+
+#fundTransferBalance {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+}
+
+#fundTransferPhp {
+  position: absolute;
+  top: 25px;
+  right: 80px;
+  visibility: hidden;
+  font-size: 12px;
+  font-weight: bolder;
+}
+.other-account {
+  position: relative;
+  display: none;
+}
+
+.other-account input {
+  width: 50%;
+  height: 30px;
+  position: absolute;
+  right: 40px;
+  top: 60px;
+}
+
+.fund-transfer-amount-container {
+  position: relative;
+  width: 90%;
+  top: 105px;
+  margin-left: 30px;
+}
+
+.fund-transfer-amount input {
+  width: 45%;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.fund-transfer-amount-container h3 {
+  font-size: 16px;
+  font-weight: 500;
+  display: inline;
+}
+#purpose {
+  margin-left: 160px;
+}
+
+.fund-transfer-amount-container button {
+  position: absolute;
+  bottom: -50px;
+  width: 30%;
+  height: 35px;
+  border-radius: 5px;
+  background-color: blue;
+  color: #fff;
+}
+
+/* ======================================= EXPENSES STYLES ====================================== */

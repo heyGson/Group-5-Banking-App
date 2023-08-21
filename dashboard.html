@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Welcome to your dashboard</title>
+  </head>
+  <body>
+    <!-- top menu area -->
+    <div class="dashboard-top-menu-container">
+      <div class="dashboard-top-left-logo">
+        <h2><span id="red">KS</span><span id="blue">Bank</span></h2>
+        <p>Kuripot Savings Bank</p>
+      </div>
+
+      <div class="dashboard-top-right-menu">
+        <ul>
+          <li><a href="">Reminders</a></li>
+          <li><a href="">Profile Settings</a></li>
+          <li><a href="">Customer Service</a></li>
+          <li><a href="index.html">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- left side menu area -->
+    <div class="dashboard-left-menu-container">
+      <div>
+        <h1>Welcome to your dashboard <span id="adminName"></span>!</h1>
+      </div>
+
+      <div class="transactions">
+        <h3>Transactions</h3>
+        <ul>
+          <li id="myAccountsTab"><a href="dashboard.html">My Accounts</a></li>
+          <li><a href="deposit.html">Deposit</a></li>
+          <li><a href="withdraw.html">Withdraw</a></li>
+          <li><a href="fundtransfer.html">Fund Transfer</a></li>
+          <li><a href="expenses.html">Expenses</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="account-dashboard">
+      <div class="my-accounts-container">
+
+        <!-- THIS IS THE 1ST ACCOUNT -->
+        <div class="first-account">
+          <div class="my-accounts">
+            <h3>My Accounts</h3>
+            <span id="add-account"><a href=""><span id="plus-sign">+</span> Add Account</a></span>
+          </div>
+          <div class="my-account-1">
+            <ul>
+              <li>
+                <b>My Account01</b><br /><span id="accountNumber"
+                  ><b>00014448332</b></span
+                ><br /><span id="my-account-text">Savings</span>
+              </li>
+              <li>
+                <span id="my-account-text">PHP</span>
+                <span id="currentBalance">1,300.00</span><br /><span
+                  id="my-account-text"
+                  >Available Balance</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="create-transcation-container">
+            <button id="create-transaction-btn">
+              Create a Transaction <span id="down-arrow">&#8964;</spanid></span>
+            </button>
+            <div class="create-transaction-dropdown">
+              <ul>
+                <li>
+                <a href=""><span>My Accounts</span></a>
+                </li>
+                <li>
+                  <a href="deposit.html"><span>Deposit</span></a>
+                </li>
+                <li>
+                  <a href="withdraw.html"><span>Withdraw</span></a>
+                </li>
+                <li>
+                  <a href="fundtransfer.html"><span>Fund Transfer</span></a>
+                </li>
+                <li>
+                  <a href="expenses.html"><span>Expenses</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- 1ST ACCOUNT ENDS HERE-->
+
+         <!-- THIS IS THE 2ND ACCOUNT -->
+         <div class="second-account">
+          <div class="my-accounts">
+            <h3>My Accounts</h3>
+            <span id="add-account"><a href=""><span id="plus-sign">+</span> Add Account</a></span>
+          </div>
+          <div class="my-account-2">
+            <ul>
+              <li>
+                <b>My Account02</b><br /><span id="accountNumber"
+                  ><b>00023578992</b></span
+                ><br /><span id="my-account-text">Savings</span>
+              </li>
+              <li>
+                <span id="my-account-text">PHP</span>
+                <span id="currentBalance">500.00</span><br /><span
+                  id="my-account-text"
+                  >Available Balance</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="create-transcation-container-2">
+            <button id="create-transaction-btn">
+              Create a Transaction <span id="down-arrow">&#8964;</spanid></span>
+            </button>
+            <div class="create-transaction-dropdown">
+              <ul>
+                <li>
+                <a href=""><span>My Accounts</span></a>
+                </li>
+                <li>
+                  <a href="deposit.html"><span>Deposit</span></a>
+                </li>
+                <li>
+                  <a href="withdraw.html"><span>Withdraw</span></a>
+                </li>
+                <li>
+                  <a href="fundtransfer.html"><span>Fund Transfer</span></a>
+                </li>
+                <li>
+                  <a href="expenses.html"><span>Expenses</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      
+    </div>
+
+    <script>
+      const getAdminName = document.getElementById("adminName");
+      const adminUsername = "Group5";
+
+      getAdminName.innerText = adminUsername;
+      
+    </script>
+  </body>
+</html>

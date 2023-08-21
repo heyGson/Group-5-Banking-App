@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Deposit page</title>
+  </head>
+  <body>
+    <!-- top menu area -->
+    <div class="dashboard-top-menu-container">
+      <div class="dashboard-top-left-logo">
+        <h2><span id="red">KS</span><span id="blue">Bank</span></h2>
+        <p>Kuripot Savings Bank</p>
+      </div>
+
+      <div class="dashboard-top-right-menu">
+        <ul>
+          <li><a href="">Reminders</a></li>
+          <li><a href="">Profile Settings</a></li>
+          <li><a href="">Customer Service</a></li>
+          <li><a href="index.html">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- left side menu area -->
+    <div class="dashboard-left-menu-container">
+      <div>
+        <h1>Welcome to your dashboard <span id="adminName"></span>!</h1>
+      </div>
+
+      <div class="transactions">
+        <h3>Transactions</h3>
+        <ul>
+          <li><a href="dashboard.html">My Accounts</a></li>
+          <li id="depositTab"><a href="deposit.html">Deposit</a></li>
+          <li><a href="withdraw.html">Withdraw</a></li>
+          <li><a href="fundtransfer.html">Fund Transfer</a></li>
+          <li><a href="expenses.html">Expenses</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="account-dashboard">
+      <div class="my-accounts-container">
+        <!-- Choose account part -->
+        <div class="dropdown-container">
+          <div class="dropdown">
+            <h3>Source Account</h3>
+            <select id="accountDropdown" onchange="updateAccountInfo()">
+              <option value="chooseAccount" selected>-- Choose Account</option>
+              <option value="account01">My Account01</option>
+              <option value="account02">My Account02</option>
+            </select>
+          </div>
+
+          <div class="account-info" id="accountInfo">
+            <p>
+              <span id="accountNumText">Account Number</span>
+              <span id="account-number"></span>
+            </p>
+            <p>
+              <span id="availableBalanceText">Available Balance </span
+              ><span id="php">PHP</span>
+              <span id="balance"></span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Placement details -->
+        <div class="amount-container">
+          <p id="depositDetails">Deposit Details</p>
+          <h3>Enter Amount</h3>
+          <div class="amount"><input type="text" placeholder="0.00" /></div>
+          <button>Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const getAdminName = document.getElementById("adminName");
+      const adminUsername = "Group5";
+
+      getAdminName.innerText = adminUsername;
+
+      function updateAccountInfo() {
+        const dropdown = document.getElementById("accountDropdown");
+        const accountInfoDiv = document.getElementById("accountInfo");
+        const accountNumberSpan = document.getElementById("account-number");
+        const balanceSpan = document.getElementById("balance");
+        const accountNumberText = document.getElementById("accountNumText");
+        const availableBalanceText = document.getElementById(
+          "availableBalanceText"
+        );
+        const php = document.getElementById("php");
+
+        if (dropdown.value === "account01") {
+          accountNumberSpan.textContent = "00014448332";
+          accountNumberSpan.style.fontSize = "18px";
+          balanceSpan.textContent = "1,300.00";
+          balanceSpan.style.fontSize = "18px";
+          accountNumberText.style.visibility = "visible";
+          availableBalanceText.style.visibility = "visible";
+          php.style.visibility = "visible";
+        } else if (dropdown.value === "account02") {
+          accountNumberSpan.textContent = "00023578992";
+          accountNumberSpan.style.fontSize = "18px";
+          balanceSpan.textContent = "500.00";
+          balanceSpan.style.fontSize = "18px";
+          accountNumberText.style.visibility = "visible";
+          availableBalanceText.style.visibility = "visible";
+          php.style.visibility = "visible";
+        }
+
+        // accountInfoDiv.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
