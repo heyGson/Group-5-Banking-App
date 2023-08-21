@@ -49,7 +49,7 @@
           <div class="dropdown">
             <h3>Source Account</h3>
             <select id="accountDropdown" onchange="updateAccountInfo()">
-              <option selected>-- Choose Account</option>
+              <option id="chooseAccount" selected>-- Choose Account</option>
               <option value="account01">My Account01</option>
               <option value="account02">My Account02</option>
             </select>
@@ -78,7 +78,9 @@
         <div class="dropdown2-container">
           <div class="dropdown2">
             <select id="fundTransferDropdown" onchange="fundTransferOption()">
-              <option selected>-- Choose Where To Transfer</option>
+              <option selected id="whereToTransfer">
+                -- Choose Where To Transfer
+              </option>
               <option value="account01" id="account01">My Account01</option>
               <option value="account02" id="account02">My Account02</option>
               <option value="otherAccount">Other Account</option>
@@ -134,6 +136,7 @@
           "availableBalanceText"
         );
         const php = document.getElementById("php");
+        const chooseAccountOption = document.getElementById("chooseAccount");
         const selectedAccount01 = document.getElementById("account01");
         const selectedAccount02 = document.getElementById("account02");
 
@@ -145,6 +148,7 @@
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";
           php.style.visibility = "visible";
+          chooseAccountOption.setAttribute("disabled", "");
           selectedAccount01.style.display = "none";
           selectedAccount02.style.display = "block";
         } else if (dropdown.value === "account02") {
@@ -155,11 +159,12 @@
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";
           php.style.visibility = "visible";
+          chooseAccountOption.setAttribute("disabled", "");
           selectedAccount02.style.display = "none";
           selectedAccount01.style.display = "block";
+        } else if (dropdown.value === "chooseAccount") {
+          accountInfos.style.display = "none";
         }
-
-        // accountInfoDiv.style.display = "block";
       }
 
       function fundTransferOption() {
@@ -179,6 +184,8 @@
         );
         const fundTransferPhp = document.getElementById("fundTransferPhp");
         const otherAccount = document.getElementById("other-account");
+        const whereToTransferOption =
+          document.getElementById("whereToTransfer");
 
         if (fundTransfer.value === "account01") {
           fundTransferAccountNum.textContent = "00014448332";
@@ -189,6 +196,7 @@
           fundTransferAvailBalanceText.style.visibility = "visible";
           fundTransferPhp.style = "visible";
           otherAccount.style.display = "none";
+          whereToTransferOption.setAttribute("disabled", "");
         } else if (fundTransfer.value === "account02") {
           fundTransferAccountNum.textContent = "00023578992";
           fundTransferAccountNum.style.fontSize = "18px";
@@ -198,10 +206,12 @@
           fundTransferAvailBalanceText.style.visibility = "visible";
           fundTransferPhp.style = "visible";
           otherAccount.style.display = "none";
+          whereToTransferOption.setAttribute("disabled", "");
         } else if (fundTransfer.value === "otherAccount") {
           otherAccount.style.display = "block";
           fundTransferAccountNumText.style.visibility = "hidden";
           fundTransferAvailBalanceText.style.visibility = "hidden";
+          whereToTransferOption.setAttribute("disabled", "");
         }
       }
     </script>

@@ -41,8 +41,63 @@
     </div>
 
     <div class="account-dashboard">
-      <div class="my-accounts-container">
-        <h1>Welcome to your expenses page</h1>
+      <div class="expenses-main-container">
+        <!-- Choose account part -->
+        <div class="dropdown-container">
+          <div class="dropdown">
+            <h3>Source Account</h3>
+            <select id="accountDropdown" onchange="updateAccountInfo()">
+              <option id="chooseAccount" selected>-- Choose Account</option>
+              <option value="account01">My Account01</option>
+              <option value="account02">My Account02</option>
+            </select>
+          </div>
+
+          <div class="account-info" id="accountInfo">
+            <p>
+              <span id="accountNumText">Account Number</span>
+              <span id="account-number"></span>
+            </p>
+            <p>
+              <span id="availableBalanceText">Available Balance </span
+              ><span id="php">PHP</span>
+              <span id="balance"></span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Placement details -->
+        <div class="expenses-container">
+          <p id="depositDetails">Add Expenses</p>
+          <table id="expensesTable">
+            <thead>
+              <tr>
+                <th>Expenses name</th>
+                <th>Cost</th>
+                <th>Add</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="addRow">
+                <td>
+                  <input
+                    type="text"
+                    id="newExpenseName"
+                    placeholder="Enter Item"
+                  />
+                </td>
+                <td>
+                  <input type="text" id="newExpenseCost" placeholder="0.00" />
+                </td>
+                <td>
+                  <button onclick="addExpense(); clearInputs()">Add</button>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -51,6 +106,76 @@
       const adminUsername = "Group5";
 
       getAdminName.innerText = adminUsername;
+
+      function updateAccountInfo() {
+        const dropdown = document.getElementById("accountDropdown");
+        const accountInfoDiv = document.getElementById("accountInfo");
+        const accountNumberSpan = document.getElementById("account-number");
+        const balanceSpan = document.getElementById("balance");
+        const accountNumberText = document.getElementById("accountNumText");
+        const availableBalanceText = document.getElementById(
+          "availableBalanceText"
+        );
+        const php = document.getElementById("php");
+        const chooseAccountOption = document.getElementById("chooseAccount");
+
+        if (dropdown.value === "account01") {
+          accountNumberSpan.textContent = "00014448332";
+          accountNumberSpan.style.fontSize = "18px";
+          balanceSpan.textContent = "1,300.00";
+          balanceSpan.style.fontSize = "18px";
+          accountNumberText.style.visibility = "visible";
+          availableBalanceText.style.visibility = "visible";
+          php.style.visibility = "visible";
+          chooseAccountOption.setAttribute("disabled", "");
+        } else if (dropdown.value === "account02") {
+          accountNumberSpan.textContent = "00023578992";
+          accountNumberSpan.style.fontSize = "18px";
+          balanceSpan.textContent = "500.00";
+          balanceSpan.style.fontSize = "18px";
+          accountNumberText.style.visibility = "visible";
+          availableBalanceText.style.visibility = "visible";
+          php.style.visibility = "visible";
+          chooseAccountOption.setAttribute("disabled", "");
+        }
+      }
+
+      function addExpense() {
+        const expensesTable = document.getElementById("expensesTable");
+        const newRow = expensesTable.insertRow(-1);
+        const expenseName = document.getElementById("newExpenseName").value;
+        const expenseCost = document.getElementById("newExpenseCost").value;
+
+        const wrapper = document.getElementById("main-container");
+
+        const cell1 = newRow.insertCell(0);
+        cell1.innerHTML = expenseName;
+
+        const cell2 = newRow.insertCell(1);
+        cell2.innerHTML = expenseCost;
+
+        const cell3 = newRow.insertCell(2);
+        cell3.innerHTML = "<button disabled>Added</button>";
+
+        const cell4 = newRow.insertCell(3);
+        cell4.innerHTML = '<button onclick="removeRow(this)">Remove</button>';
+
+        if (newRow >= 4) {
+          wrapper.style.overflowY = "scroll";
+        }
+      }
+
+      function removeRow(button) {
+        const row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
+
+      function clearInputs() {
+        const expenseName = (document.getElementById("newExpenseName").value =
+          "");
+        const expenseCost = (document.getElementById("newExpenseCost").value =
+          "");
+      }
     </script>
   </body>
 </html>
