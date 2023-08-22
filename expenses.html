@@ -100,13 +100,8 @@
         </div>
       </div>
     </div>
-
+    <script src="script.js"></script>
     <script>
-      const getAdminName = document.getElementById("adminName");
-      const adminUsername = "Group5";
-
-      getAdminName.innerText = adminUsername;
-
       function updateAccountInfo() {
         const dropdown = document.getElementById("accountDropdown");
         const accountInfoDiv = document.getElementById("accountInfo");
@@ -120,18 +115,18 @@
         const chooseAccountOption = document.getElementById("chooseAccount");
 
         if (dropdown.value === "account01") {
-          accountNumberSpan.textContent = "00014448332";
+          accountNumberSpan.textContent = accountOneNumber;
           accountNumberSpan.style.fontSize = "18px";
-          balanceSpan.textContent = "1,300.00";
+          balanceSpan.textContent = `${accountOneBalance}.00`;
           balanceSpan.style.fontSize = "18px";
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";
           php.style.visibility = "visible";
           chooseAccountOption.setAttribute("disabled", "");
         } else if (dropdown.value === "account02") {
-          accountNumberSpan.textContent = "00023578992";
+          accountNumberSpan.textContent = accountTwoNumber;
           accountNumberSpan.style.fontSize = "18px";
-          balanceSpan.textContent = "500.00";
+          balanceSpan.textContent = `${accountTwoBalance}.00`;
           balanceSpan.style.fontSize = "18px";
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";

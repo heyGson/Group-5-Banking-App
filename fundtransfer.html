@@ -119,13 +119,8 @@
         </div>
       </div>
     </div>
-
+    <script src="script.js"></script>
     <script>
-      const getAdminName = document.getElementById("adminName");
-      const adminUsername = "Group5";
-
-      getAdminName.innerText = adminUsername;
-
       function updateAccountInfo() {
         const dropdown = document.getElementById("accountDropdown");
         const accountInfoDiv = document.getElementById("accountInfo");
@@ -141,9 +136,9 @@
         const selectedAccount02 = document.getElementById("account02");
 
         if (dropdown.value === "account01") {
-          accountNumberSpan.textContent = "00014448332";
+          accountNumberSpan.textContent = accountOneNumber;
           accountNumberSpan.style.fontSize = "18px";
-          balanceSpan.textContent = "1,300.00";
+          balanceSpan.textContent = `${accountOneBalance}.00`;
           balanceSpan.style.fontSize = "18px";
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";
@@ -152,9 +147,9 @@
           selectedAccount01.style.display = "none";
           selectedAccount02.style.display = "block";
         } else if (dropdown.value === "account02") {
-          accountNumberSpan.textContent = "00023578992";
+          accountNumberSpan.textContent = accountTwoNumber;
           accountNumberSpan.style.fontSize = "18px";
-          balanceSpan.textContent = "500.00";
+          balanceSpan.textContent = `${accountTwoBalance}.00`;
           balanceSpan.style.fontSize = "18px";
           accountNumberText.style.visibility = "visible";
           availableBalanceText.style.visibility = "visible";
@@ -188,9 +183,9 @@
           document.getElementById("whereToTransfer");
 
         if (fundTransfer.value === "account01") {
-          fundTransferAccountNum.textContent = "00014448332";
+          fundTransferAccountNum.textContent = accountOneNumber;
           fundTransferAccountNum.style.fontSize = "18px";
-          fundTransferBalance.textContent = "1,300.00";
+          fundTransferBalance.textContent = `${accountOneBalance}.00`;
           fundTransferBalance.style.fontSize = "18px";
           fundTransferAccountNumText.style.visibility = "visible";
           fundTransferAvailBalanceText.style.visibility = "visible";
@@ -198,9 +193,9 @@
           otherAccount.style.display = "none";
           whereToTransferOption.setAttribute("disabled", "");
         } else if (fundTransfer.value === "account02") {
-          fundTransferAccountNum.textContent = "00023578992";
+          fundTransferAccountNum.textContent = accountTwoNumber;
           fundTransferAccountNum.style.fontSize = "18px";
-          fundTransferBalance.textContent = "1500.00";
+          fundTransferBalance.textContent = `${accountTwoBalance}.00`;
           fundTransferBalance.style.fontSize = "18px";
           fundTransferAccountNumText.style.visibility = "visible";
           fundTransferAvailBalanceText.style.visibility = "visible";

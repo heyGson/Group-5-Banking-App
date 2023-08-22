@@ -52,13 +52,13 @@
           <div class="my-account-1">
             <ul>
               <li>
-                <b>My Account01</b><br /><span id="accountNumber"
-                  ><b>00014448332</b></span
+                <b>My Account01</b><br /><span id="accountNumber" class="accountOneNum"
+                  ><b></b></span
                 ><br /><span id="my-account-text">Savings</span>
               </li>
               <li>
                 <span id="my-account-text">PHP</span>
-                <span id="currentBalance">1,300.00</span><br /><span
+                <span id="currentBalance" class="accountOneBalance"></span><br /><span
                   id="my-account-text"
                   >Available Balance</span
                 >
@@ -101,13 +101,13 @@
           <div class="my-account-2">
             <ul>
               <li>
-                <b>My Account02</b><br /><span id="accountNumber"
-                  ><b>00023578992</b></span
+                <b>My Account02</b><br /><span class="accountTwoNum" id="accountNumber"
+                  ></span
                 ><br /><span id="my-account-text">Savings</span>
               </li>
               <li>
                 <span id="my-account-text">PHP</span>
-                <span id="currentBalance">500.00</span><br /><span
+                <span id="currentBalance" class="accountTwoBalance"></span><br /><span
                   id="my-account-text"
                   >Available Balance</span
                 >
@@ -144,12 +144,26 @@
 
       
     </div>
-
+    <script src="script.js"></script>
     <script>
-      const getAdminName = document.getElementById("adminName");
-      const adminUsername = "Group5";
 
-      getAdminName.innerText = adminUsername;
+      // Account 1 variables
+      const accountOne = document.querySelector(".accountOneNum")
+      let accountOneBalances = document.querySelector(".accountOneBalance");
+
+      // Account 2 variables
+      const accountTwo = document.querySelector(".accountTwoNum");
+      let accountTwoBalances = document.querySelector(".accountTwoBalance")
+
+
+      accountOne.textContent = accountOneNumber;
+      accountOne.style.fontWeight = "Bolder";
+      accountOneBalances.textContent = `${accountOneBalance}.00`;
+     
+      accountTwo.textContent = accountTwoNumber;
+      accountTwo.style.fontWeight = "Bolder";
+      accountTwoBalances.textContent = `${accountTwoBalance}.00`
+     
       
     </script>
   </body>
