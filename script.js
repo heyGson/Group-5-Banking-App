@@ -13,6 +13,8 @@ const accountOneNumber = "00014448332";
 let accountTwoBalance = 958;
 const accountTwoNumber = "00023578992";
 
+getAdminName.textContent = adminUsername;
+
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent form submission
 
