@@ -14,16 +14,3 @@ let accountTwoBalance = 958;
 const accountTwoNumber = "00023578992";
 
 getAdminName.textContent = adminUsername;
-
-loginForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent form submission
-
-  const username = document.getElementById("username-input").value;
-  const password = document.getElementById("password-input").value;
-
-  if (username === adminUsername && password === adminPassword) {
-    window.location.href = "dashboard.html";
-  } else {
-    alert("Invalid credentials. Please try again.");
-  }
-});
