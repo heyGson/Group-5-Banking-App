@@ -615,10 +615,11 @@ li {
 .fund-transfer-amount-container h3 {
   font-size: 16px;
   font-weight: 500;
-  display: inline;
+  display: inline-block;
 }
-#purpose {
-  margin-left: 160px;
+
+#enterAmount {
+  margin-right: 160px;
 }
 
 .fund-transfer-amount-container button {

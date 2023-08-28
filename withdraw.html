@@ -70,30 +70,27 @@
         <div class="amount-container">
           <p id="depositDetails">Withdrawal Details</p>
           <h3>Enter Amount</h3>
-          <div class="amount"><input type="text" placeholder="0.00" /></div>
-          <button>Submit</button>
+          <div class="amount">
+            <input id="withdraw" type="text" placeholder="0.00" />
+          </div>
+          <button id="submitBtn" onclick="withdrawal()">Submit</button>
         </div>
       </div>
     </div>
     <script src="script.js"></script>
     <script>
-      // const getAdminName = document.getElementById("adminName");
-      // const adminUsername = "Group5";
-
-      // getAdminName.innerText = adminUsername;
+      const dropdown = document.getElementById("accountDropdown");
+      const accountInfoDiv = document.getElementById("accountInfo");
+      const accountNumberSpan = document.getElementById("account-number");
+      const balanceSpan = document.getElementById("balance");
+      const accountNumberText = document.getElementById("accountNumText");
+      const availableBalanceText = document.getElementById(
+        "availableBalanceText"
+      );
+      const php = document.getElementById("php");
+      const chooseAccountOption = document.getElementById("chooseAccount");
 
       function updateAccountInfo() {
-        const dropdown = document.getElementById("accountDropdown");
-        const accountInfoDiv = document.getElementById("accountInfo");
-        const accountNumberSpan = document.getElementById("account-number");
-        const balanceSpan = document.getElementById("balance");
-        const accountNumberText = document.getElementById("accountNumText");
-        const availableBalanceText = document.getElementById(
-          "availableBalanceText"
-        );
-        const php = document.getElementById("php");
-        const chooseAccountOption = document.getElementById("chooseAccount");
-
         if (dropdown.value === "account01") {
           accountNumberSpan.textContent = accountOneNumber;
           accountNumberSpan.style.fontSize = "18px";
@@ -114,6 +111,31 @@
           chooseAccountOption.setAttribute("disabled", "");
         }
       }
+
+      function withdrawal() {
+        let withdrawalAmount = parseFloat(
+          document.getElementById("withdraw").value
+        );
+        if (isNaN(withdrawalAmount)) {
+          // Handle the case where the input is not a valid number
+          return;
+        }
+        if (dropdown.value === "account01") {
+          accountOneBalance -= withdrawalAmount;
+          balanceSpan.textContent = `${accountOneBalance.toFixed(2)}`;
+        } else if (dropdown.value === "account02") {
+          accountTwoBalance -= withdrawalAmount;
+          balanceSpan.textContent = `${accountTwoBalance.toFixed(2)}`;
+        }
+      }
+
+      const submitButton = document.getElementById("submitBtn");
+
+      submitButton.addEventListener("click", function clear(e) {
+        e.preventDefault();
+        const clearInput = document.getElementById("withdraw");
+        clearInput.value = "";
+      });
     </script>
   </body>
 </html>

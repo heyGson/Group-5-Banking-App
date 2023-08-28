@@ -50,8 +50,8 @@
             <h3>Source Account</h3>
             <select id="accountDropdown" onchange="updateAccountInfo()">
               <option id="chooseAccount" selected>-- Choose Account</option>
-              <option value="account01">My Account01</option>
-              <option value="account02">My Account02</option>
+              <option value="source-account-01">My Account01</option>
+              <option value="source-account-02">My Account02</option>
             </select>
           </div>
 
@@ -100,42 +100,66 @@
               </p>
             </div>
             <div class="other-account" id="other-account">
-              <input type="text" placeholder="Enter Account Number" />
+              <input
+                id="accountNumInput"
+                type="text"
+                placeholder="Enter Account Number"
+              />
             </div>
           </div>
         </div>
 
         <!-- Placement details -->
         <div class="fund-transfer-amount-container">
-          <h3>Enter Amount</h3>
+          <h3 id="enterAmount">Enter Amount</h3>
           <h3 id="purpose">Purpose (Optional)</h3>
           <div class="fund-transfer-amount">
-            <input type="text" placeholder="0.00" />
-            <input type="text" placeholder="Enter Purpose" />
+            <input id="fund-transfer-amount" type="text" placeholder="0.00" />
+            <input id="purpose" type="text" placeholder="Enter Purpose" />
           </div>
 
           <div class="fund-transfer-amount"></div>
-          <button>Submit</button>
+          <button id="fund-transfer-btn" onclick="fundTransfered()">
+            Submit
+          </button>
         </div>
       </div>
     </div>
     <script src="script.js"></script>
     <script>
-      function updateAccountInfo() {
-        const dropdown = document.getElementById("accountDropdown");
-        const accountInfoDiv = document.getElementById("accountInfo");
-        const accountNumberSpan = document.getElementById("account-number");
-        const balanceSpan = document.getElementById("balance");
-        const accountNumberText = document.getElementById("accountNumText");
-        const availableBalanceText = document.getElementById(
-          "availableBalanceText"
-        );
-        const php = document.getElementById("php");
-        const chooseAccountOption = document.getElementById("chooseAccount");
-        const selectedAccount01 = document.getElementById("account01");
-        const selectedAccount02 = document.getElementById("account02");
+      const dropdown = document.getElementById("accountDropdown");
+      const accountInfoDiv = document.getElementById("accountInfo");
+      const accountNumberSpan = document.getElementById("account-number");
+      const balanceSpan = document.getElementById("balance");
+      const accountNumberText = document.getElementById("accountNumText");
+      const availableBalanceText = document.getElementById(
+        "availableBalanceText"
+      );
+      const php = document.getElementById("php");
+      const chooseAccountOption = document.getElementById("chooseAccount");
+      const selectedAccount01 = document.getElementById("account01");
+      const selectedAccount02 = document.getElementById("account02");
 
-        if (dropdown.value === "account01") {
+      const fundTransfer = document.getElementById("fundTransferDropdown");
+
+      const fundTransferAccountNum = document.getElementById(
+        "fundTransferAccountNum"
+      );
+      const fundTransferBalance = document.getElementById(
+        "fundTransferBalance"
+      );
+      const fundTransferAccountNumText = document.getElementById(
+        "fundTransferAccountNumText"
+      );
+      const fundTransferAvailBalanceText = document.getElementById(
+        "fundTransferAvailBalanceText"
+      );
+      const fundTransferPhp = document.getElementById("fundTransferPhp");
+      const otherAccount = document.getElementById("other-account");
+      const whereToTransferOption = document.getElementById("whereToTransfer");
+
+      function updateAccountInfo() {
+        if (dropdown.value === "source-account-01") {
           accountNumberSpan.textContent = accountOneNumber;
           accountNumberSpan.style.fontSize = "18px";
           balanceSpan.textContent = `${accountOneBalance}.00`;
@@ -146,7 +170,7 @@
           chooseAccountOption.setAttribute("disabled", "");
           selectedAccount01.style.display = "none";
           selectedAccount02.style.display = "block";
-        } else if (dropdown.value === "account02") {
+        } else if (dropdown.value === "source-account-02") {
           accountNumberSpan.textContent = accountTwoNumber;
           accountNumberSpan.style.fontSize = "18px";
           balanceSpan.textContent = `${accountTwoBalance}.00`;
@@ -163,25 +187,6 @@
       }
 
       function fundTransferOption() {
-        const fundTransfer = document.getElementById("fundTransferDropdown");
-
-        const fundTransferAccountNum = document.getElementById(
-          "fundTransferAccountNum"
-        );
-        const fundTransferBalance = document.getElementById(
-          "fundTransferBalance"
-        );
-        const fundTransferAccountNumText = document.getElementById(
-          "fundTransferAccountNumText"
-        );
-        const fundTransferAvailBalanceText = document.getElementById(
-          "fundTransferAvailBalanceText"
-        );
-        const fundTransferPhp = document.getElementById("fundTransferPhp");
-        const otherAccount = document.getElementById("other-account");
-        const whereToTransferOption =
-          document.getElementById("whereToTransfer");
-
         if (fundTransfer.value === "account01") {
           fundTransferAccountNum.textContent = accountOneNumber;
           fundTransferAccountNum.style.fontSize = "18px";
@@ -209,6 +214,43 @@
           whereToTransferOption.setAttribute("disabled", "");
         }
       }
+
+      function fundTransfered() {
+        let fundTransferAmount = parseFloat(
+          document.getElementById("fund-transfer-amount").value
+        );
+        let fundTransferPurpose = document.getElementById("purpose").value;
+
+        if (isNaN(fundTransferAmount)) {
+          // Handle the case where the input is not a valid number
+          return;
+        }
+
+        if (
+          dropdown.value === "source-account-01" &&
+          fundTransfer.value === "account02"
+        ) {
+          accountOneBalance -= fundTransferAmount;
+          accountTwoBalance += fundTransferAmount;
+          balanceSpan.textContent = `${accountOneBalance.toFixed(2)}`;
+          fundTransferBalance.textContent = `${accountTwoBalance.toFixed(2)}`;
+        } else if (
+          dropdown.value === "source-account-02" &&
+          fundTransfer.value === "account01"
+        ) {
+          accountTwoBalance -= fundTransferAmount;
+          accountOneBalance += fundTransferAmount;
+          fundTransferBalance.textContent = `${accountTwoBalance.toFixed(2)}`;
+          balanceSpan.textContent = `${accountOneBalance.toFixed(2)}`;
+        }
+      }
+
+      const fundTransferBtn = document.getElementById("fund-transfer-btn");
+      fundTransferBtn.addEventListener("click", function clear(e) {
+        e.preventDefault();
+        const clearInput = document.getElementById("fund-transfer-amount");
+        clearInput.value = "";
+      });
     </script>
   </body>
 </html>

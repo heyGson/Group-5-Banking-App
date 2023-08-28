@@ -70,30 +70,29 @@
         <div class="amount-container">
           <p id="depositDetails">Deposit Details</p>
           <h3>Enter Amount</h3>
-          <div class="amount"><input type="text" placeholder="0.00" /></div>
-          <button>Submit</button>
+          <div class="amount">
+            <input id="deposit" type="text" placeholder="0.00" />
+          </div>
+          <button id="submitBtn" onclick="deposited()">Submit</button>
         </div>
       </div>
     </div>
     <script src="script.js"></script>
     <script>
-      // const getAdminName = document.getElementById("adminName");
-      // const adminUsername = "Group5";
-
       getAdminName.innerText = adminUsername;
 
-      function updateAccountInfo() {
-        const dropdown = document.getElementById("accountDropdown");
-        const accountInfoDiv = document.getElementById("accountInfo");
-        const accountNumberSpan = document.getElementById("account-number");
-        const balanceSpan = document.getElementById("balance");
-        const accountNumberText = document.getElementById("accountNumText");
-        const availableBalanceText = document.getElementById(
-          "availableBalanceText"
-        );
-        const php = document.getElementById("php");
-        const chooseAccountOption = document.getElementById("chooseAccount");
+      const dropdown = document.getElementById("accountDropdown");
+      const accountInfoDiv = document.getElementById("accountInfo");
+      const accountNumberSpan = document.getElementById("account-number");
+      const balanceSpan = document.getElementById("balance");
+      const accountNumberText = document.getElementById("accountNumText");
+      const availableBalanceText = document.getElementById(
+        "availableBalanceText"
+      );
+      const php = document.getElementById("php");
+      const chooseAccountOption = document.getElementById("chooseAccount");
 
+      function updateAccountInfo() {
         if (dropdown.value === "account01") {
           accountNumberSpan.textContent = accountOneNumber;
           accountNumberSpan.style.fontSize = "18px";
@@ -114,6 +113,32 @@
           chooseAccountOption.setAttribute("disabled", "");
         }
       }
+
+      function deposited() {
+        let depositAmount = parseFloat(
+          document.getElementById("deposit").value
+        );
+        if (isNaN(depositAmount)) {
+          // Handle the case where the input is not a valid number
+          return;
+        }
+
+        if (dropdown.value === "account01") {
+          accountOneBalance += depositAmount;
+          balanceSpan.textContent = `${accountOneBalance.toFixed(2)}`;
+        } else if (dropdown.value === "account02") {
+          accountTwoBalance += depositAmount;
+          balanceSpan.textContent = `${accountTwoBalance.toFixed(2)}`;
+        }
+      }
+
+      const submitButton = document.getElementById("submitBtn");
+
+      submitButton.addEventListener("click", function clear(e) {
+        e.preventDefault();
+        const clearInput = document.getElementById("deposit");
+        clearInput.value = "";
+      });
     </script>
   </body>
 </html>
