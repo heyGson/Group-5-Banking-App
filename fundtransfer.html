@@ -242,6 +242,18 @@
           accountOneBalance += fundTransferAmount;
           balanceSpan.textContent = `${accountTwoBalance.toFixed(2)}`;
           fundTransferBalance.textContent = `${accountOneBalance.toFixed(2)}`;
+        } else if (
+          dropdown.value === "source-account-01" &&
+          fundTransfer.value === "otherAccount"
+        ) {
+          accountOneBalance -= fundTransferAmount;
+          balanceSpan.textContent = `${accountOneBalance.toFixed(2)}`;
+        } else if (
+          dropdown.value === "source-account-02" &&
+          fundTransfer.value === "otherAccount"
+        ) {
+          accountTwoBalance -= fundTransferAmount;
+          balanceSpan.textContent = `${accountTwoBalance.toFixed(2)}`;
         }
       }
 
