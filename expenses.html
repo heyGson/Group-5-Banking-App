@@ -102,18 +102,18 @@
     </div>
     <script src="script.js"></script>
     <script>
-      function updateAccountInfo() {
-        const dropdown = document.getElementById("accountDropdown");
-        const accountInfoDiv = document.getElementById("accountInfo");
-        const accountNumberSpan = document.getElementById("account-number");
-        const balanceSpan = document.getElementById("balance");
-        const accountNumberText = document.getElementById("accountNumText");
-        const availableBalanceText = document.getElementById(
-          "availableBalanceText"
-        );
-        const php = document.getElementById("php");
-        const chooseAccountOption = document.getElementById("chooseAccount");
+      const dropdown = document.getElementById("accountDropdown");
+      const accountInfoDiv = document.getElementById("accountInfo");
+      const accountNumberSpan = document.getElementById("account-number");
+      const balanceSpan = document.getElementById("balance");
+      const accountNumberText = document.getElementById("accountNumText");
+      const availableBalanceText = document.getElementById(
+        "availableBalanceText"
+      );
+      const php = document.getElementById("php");
+      const chooseAccountOption = document.getElementById("chooseAccount");
 
+      function updateAccountInfo() {
         if (dropdown.value === "account01") {
           accountNumberSpan.textContent = accountOneNumber;
           accountNumberSpan.style.fontSize = "18px";
@@ -139,7 +139,9 @@
         const expensesTable = document.getElementById("expensesTable");
         const newRow = expensesTable.insertRow(-1);
         const expenseName = document.getElementById("newExpenseName").value;
-        const expenseCost = document.getElementById("newExpenseCost").value;
+        let expenseCost = parseFloat(
+          document.getElementById("newExpenseCost").value
+        );
 
         const wrapper = document.getElementById("main-container");
 
@@ -147,7 +149,7 @@
         cell1.innerHTML = expenseName;
 
         const cell2 = newRow.insertCell(1);
-        cell2.innerHTML = expenseCost;
+        cell2.innerHTML = `${expenseCost}.00`;
 
         const cell3 = newRow.insertCell(2);
         cell3.innerHTML = "<button disabled>Added</button>";
@@ -155,13 +157,57 @@
         const cell4 = newRow.insertCell(3);
         cell4.innerHTML = '<button onclick="removeRow(this)">Remove</button>';
 
+        // Set the data-expense-amount attribute on the row to store the expense amount
+        newRow.setAttribute("data-expense-amount", expenseCost);
+
+        // Set the data-account attribute on the row to store the associated account
+        newRow.setAttribute("data-account", dropdown.value);
+
         if (newRow >= 4) {
           wrapper.style.overflowY = "scroll";
+        }
+
+        if (isNaN(expenseCost)) {
+          // Handle the case where the input is not a valid number
+          alert("Please enter amount only");
+          cell1.style.display = "none";
+          cell2.style.display = "none";
+          cell3.style.display = "none";
+          cell4.style.display = "none";
+          return;
+        }
+
+        if (dropdown.value === "account01") {
+          accountOneBalance -= expenseCost;
+          balanceSpan.textContent = `${accountOneBalance}.00`;
+        } else if (dropdown.value === "account02") {
+          accountTwoBalance -= expenseCost;
+          balanceSpan.textContent = `${accountTwoBalance}.00`;
         }
       }
 
       function removeRow(button) {
         const row = button.parentNode.parentNode;
+        const expenseAmount = parseFloat(
+          row.getAttribute("data-expense-amount")
+        );
+        const account = row.getAttribute("data-account");
+
+        // Deduct the removed expense amount from the associated account
+        if (account === "account01") {
+          accountOneBalance += expenseAmount;
+          dropdown.value === "account01";
+          accountNumberSpan.textContent = accountOneNumber;
+          balanceSpan.textContent = `${accountOneBalance}.00`;
+          accountOneBalances.textContent = `${accountOneBalance}.00`;
+        } else if (account === "account02") {
+          accountTwoBalance += expenseAmount;
+          dropdown.value === "account01";
+          accountNumberSpan.textContent = accountTwoNumber;
+          balanceSpan.textContent = `${accountTwoBalance}.00`;
+          accountTwoBalances.textContent = `${accountTwoBalance}.00`;
+        }
+
         row.parentNode.removeChild(row);
       }
 

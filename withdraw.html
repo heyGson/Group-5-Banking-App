@@ -73,9 +73,16 @@
           <div class="amount">
             <input id="withdraw" type="text" placeholder="0.00" />
           </div>
-          <button id="submitBtn" onclick="withdrawal()">Submit</button>
+          <button id="submitBtn" onclick="withdrawal(); withdrawPopup()">
+            Submit
+          </button>
         </div>
       </div>
+    </div>
+    <!-- withdrawal popup -->
+    <div class="popup">
+      <span id="x-button">X</span>
+      <div id="popup-message"></div>
     </div>
     <script src="script.js"></script>
     <script>
@@ -120,6 +127,7 @@
           // Handle the case where the input is not a valid number
           return;
         }
+
         if (dropdown.value === "account01") {
           accountOneBalance -= withdrawalAmount;
           balanceSpan.textContent = `${accountOneBalance.toFixed(2)}`;
@@ -136,6 +144,41 @@
         const clearInput = document.getElementById("withdraw");
         clearInput.value = "";
       });
+
+      //popup function
+      function withdrawPopup() {
+        const popup = document.querySelector(".popup");
+        const popupMessage = document.getElementById("popup-message");
+        let withdrawAmountInput = document.getElementById("withdraw");
+        let withdrawAmount = parseFloat(withdrawAmountInput.value);
+
+        popup.style.display = "block";
+
+        // if (
+        //   accountOneBalance < withdrawAmount &&
+        //   accountTwoBalance < withdrawAmount
+        // ) {
+        //   alert("insufficient funds");
+        //   popup.style.display = "none";
+        // }
+
+        if (dropdown.value === "account01") {
+          popupMessage.textContent = `The amount of PHP ${withdrawAmount.toFixed(
+            2
+          )} was successfully withdrew  to this account ${accountOneNumber}. Thank you for banking with us!`;
+        } else if (dropdown.value === "account02") {
+          popupMessage.textContent = `The amount of PHP ${withdrawAmount.toFixed(
+            2
+          )} was successfully withdrew to this account ${accountTwoNumber}. Thank you for banking with us!`;
+        }
+
+        // function to close the popup
+        document
+          .querySelector("#x-button")
+          .addEventListener("click", function () {
+            document.querySelector(".popup").style.display = "none";
+          });
+      }
     </script>
   </body>
 </html>

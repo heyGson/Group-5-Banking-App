@@ -678,3 +678,45 @@ input {
   padding: 5px 10px;
   cursor: pointer;
 }
+
+/* ======================================= DEPOSIT/WITHDRAW POPUP STYLES ============================= */
+
+.popup {
+  position: relative;
+  background-color: blue;
+  color: #fff;
+  width: 75%;
+  height: 5%;
+  padding: 20px 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 60%;
+  top: 15%;
+  border-radius: 12px;
+  font-family: inherit;
+  font-weight: 500;
+  display: none;
+}
+
+#popup-message {
+  position: absolute;
+  top: 25%;
+  display: inline;
+  font-size: 18x;
+  font-weight: 500px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#x-button {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+}
+
+#x-button:hover {
+  font-weight: 700;
+}
+
+/* ======================================= WITHDRAW POPUP STYLES ====================================== */
