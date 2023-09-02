@@ -101,7 +101,7 @@
             </div>
             <div class="other-account" id="other-account">
               <input
-                id="accountNumInput"
+                id="other-account-num-input"
                 type="text"
                 placeholder="Enter Account Number"
               />
@@ -119,11 +119,19 @@
           </div>
 
           <div class="fund-transfer-amount"></div>
-          <button id="fund-transfer-btn" onclick="fundTransfered()">
+          <button
+            id="fund-transfer-btn"
+            onclick="fundTransfered(); fundTransferPopup()"
+          >
             Submit
           </button>
         </div>
       </div>
+    </div>
+    <!-- withdrawal popup -->
+    <div class="popup">
+      <span id="x-button">X</span>
+      <div id="popup-message"></div>
     </div>
     <script src="script.js"></script>
     <script>
@@ -263,6 +271,67 @@
         const clearInput = document.getElementById("fund-transfer-amount");
         clearInput.value = "";
       });
+
+      //popup function
+      function fundTransferPopup() {
+        const popup = document.querySelector(".popup");
+        const popupMessage = document.getElementById("popup-message");
+        let fundTransferAmountInput = document.getElementById(
+          "fund-transfer-amount"
+        );
+        let fundTransferAmount = parseFloat(fundTransferAmountInput.value);
+        let fundTransferPurpose = document.getElementById("purpose").value;
+        let otherAccountNumber = document.getElementById(
+          "other-account-num-input"
+        ).value;
+
+        popup.style.display = "block";
+
+        // if (
+        //   accountOneBalance < withdrawAmount &&
+        //   accountTwoBalance < withdrawAmount
+        // ) {
+        //   alert("insufficient funds");
+        //   popup.style.display = "none";
+        // }
+
+        if (
+          dropdown.value === "source-account-01" &&
+          fundTransfer.value === "account02"
+        ) {
+          popupMessage.textContent = `The amount of PHP ${fundTransferAmount.toFixed(
+            2
+          )} was successfully transfered  to this account ${accountTwoNumber}. Thank you for banking with us!`;
+        } else if (
+          dropdown.value === "source-account-02" &&
+          fundTransfer.value === "account01"
+        ) {
+          popupMessage.textContent = `The amount of PHP ${fundTransferAmount.toFixed(
+            2
+          )} was successfully withdrew to this account ${accountOneNumber}. Thank you for banking with us!`;
+        } else if (
+          dropdown.value === "source-account-01" &&
+          fundTransfer.value === "otherAccount"
+        ) {
+          popupMessage.textContent = `The amount of PHP ${fundTransferAmount.toFixed(
+            2
+          )} was successfully withdrew to this account ${otherAccountNumber}. Thank you for banking with us!`;
+        } else if (
+          dropdown.value === "source-account-02" &&
+          fundTransfer.value === "otherAccount"
+        ) {
+          popupMessage.textContent = `The amount of PHP ${fundTransferAmount.toFixed(
+            2
+          )} was successfully withdrew to this account ${otherAccountNumber}. Thank you for banking with us!`;
+        }
+      }
+
+      // function to close the popup
+      document
+        .querySelector("#x-button")
+        .addEventListener("click", function () {
+          document.querySelector(".popup").style.display = "none";
+        });
     </script>
   </body>
 </html>

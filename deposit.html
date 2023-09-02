@@ -73,9 +73,16 @@
           <div class="amount">
             <input id="deposit" type="text" placeholder="0.00" />
           </div>
-          <button id="submitBtn" onclick="deposited()">Submit</button>
+          <button id="submitBtn" onclick="deposited(); depositPopup()">
+            Submit
+          </button>
         </div>
       </div>
+    </div>
+    <!-- deposit popup -->
+    <div class="popup">
+      <span id="x-button">X</span>
+      <div id="popup-message"></div>
     </div>
     <script src="script.js"></script>
     <script>
@@ -118,11 +125,6 @@
         let depositAmount = parseFloat(
           document.getElementById("deposit").value
         );
-        if (isNaN(depositAmount)) {
-          // Handle the case where the input is not a valid number
-          return;
-        }
-
         if (dropdown.value === "account01") {
           accountOneBalance += depositAmount;
           balanceSpan.textContent = `${accountOneBalance.toFixed(2)}`;
@@ -139,6 +141,37 @@
         const clearInput = document.getElementById("deposit");
         clearInput.value = "";
       });
+
+      //popup function
+      function depositPopup() {
+        const popup = document.querySelector(".popup");
+        const dashboardContainer = document.querySelector(".account-dashboard");
+        const popupMessage = document.getElementById("popup-message");
+        let depositAmountInput = document.getElementById("deposit");
+        let depositAmount = parseFloat(depositAmountInput.value);
+        const textBold = document.createElement("b");
+
+        popup.style.display = "block";
+        dashboardContainer.classList.add("blurry");
+
+        if (dropdown.value === "account01") {
+          popupMessage.textContent = `The amount of PHP ${depositAmount.toFixed(
+            2
+          )} was successfully deposited to this account ${accountOneNumber}. Thank you for banking with us!`;
+        } else if (dropdown.value === "account02") {
+          popupMessage.textContent = `The amount of PHP ${depositAmount.toFixed(
+            2
+          )} was successfully deposited to this account ${accountTwoNumber}. Thank you for banking with us!`;
+        }
+
+        // function to close the popup
+        document
+          .querySelector("#x-button")
+          .addEventListener("click", function () {
+            document.querySelector(".popup").style.display = "none";
+            dashboardContainer.classList.remove("blurry");
+          });
+      }
     </script>
   </body>
 </html>
